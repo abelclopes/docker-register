@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    restart: always
+  registry:
+    image: registry:2
+    container_name: registry
     ports:
-      - "9000:9000"
+      - "5000:5000"
+    restart: always
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - registry_data:/var/lib/registry
 
 volumes:
-  portainer_data:
+  registry_data:
+    driver: local
